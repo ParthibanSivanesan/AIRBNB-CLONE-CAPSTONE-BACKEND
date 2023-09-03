@@ -23,6 +23,7 @@ const app = express();
 app.use(express.json());
 
 const base_array = [
+  'https://airbnb-clone-mern.netlify.app/',
   'http://localhost:9090',
 ];
 
