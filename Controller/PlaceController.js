@@ -134,3 +134,18 @@ exports.searchPlaces = async (req, res) => {
     res.send({ Err: err });
   }
 }
+
+exports.searchHotels = async (req, res) => {
+  try {
+    const searchword = req.params.key;
+
+    if (searchword === '') return res.status(200).json(await Places.find())
+
+    const searchMatches = await Places.find({ title: { $regex: searchword, $options: "i" } })
+
+    res.status(200).json(searchMatches);
+  } catch (err) {
+    console.log(err)
+    res.send({ Err: err });
+  }
+}
